@@ -118,7 +118,8 @@ public class Scrabble {
 			
 			// Case 3: Validate the word against the letters available in the hand
 			if (!MyString.subsetOf(input, hand)) {
-				System.out.println("Invalid word. Try again.");
+				System.out.println("No such word in the dictionary. Try again.");
+				//System.out.println("Invalid word. Try again.");
 				continue;	
 			}
 			
