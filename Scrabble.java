@@ -112,8 +112,8 @@ public class Scrabble {
 			
 			// Case 2: Validate the word against the dictionary
 			if (!isWordInDictionary(input)) {
-				System.out.println("Invalid word. Try again.");
-				//System.out.println("No such word in the dictionary. Try again.");
+				//System.out.println("Invalid word. Try again.");
+				System.out.println("No such word in the dictionary. Try again.");
 				continue;
 			}
 			
