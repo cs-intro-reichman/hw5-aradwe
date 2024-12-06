@@ -128,7 +128,8 @@ public class Scrabble {
 			score += wordScore;
 
 			// Display word score and running total
-			System.out.println("\"" + input + "\" earned " + wordScore + " points. Total: " + score + " points.");
+			System.out.println("'" + input + "' -> score: " + wordScore);
+			//System.out.println("\"" + input + "\" earned " + wordScore + " points. Total: " + score + " points.");
 		}
 
 		// Final message if the hand was left empty.
