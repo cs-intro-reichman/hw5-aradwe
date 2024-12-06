@@ -66,6 +66,7 @@ public class Scrabble {
 			int letterValue = SCRABBLE_LETTER_VALUES[word.charAt(i) - 'a'];
 			score += letterValue;
 		}
+		score = score * word.length();
 		// Additional score for special conditions
 		if (word.length() == HAND_SIZE) {
 			score += 50; // Adds bonus for using all letters in hand
