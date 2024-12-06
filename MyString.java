@@ -9,6 +9,17 @@ public class MyString {
         System.out.println(countChar(hello, 'z'));
         System.out.println(spacedString(hello));
         //// Put your other tests here.
+        System.out.println(subsetOf("hell", hello)); // true
+        System.out.println(subsetOf("h", hello)); // true
+        System.out.println(subsetOf(hello, "q")); // false
+        System.out.println(subsetOf(hello, "hell")); // false
+
+        System.out.println(spacedString(hello));
+        System.out.println(randomStringOfLetters(5));
+        System.out.println(remove(hello, "ll"));
+        System.out.println(remove("committee", "meet"));
+        System.out.println(insertRandomly('s', "cat"));
+        
     }
 
     /**
@@ -20,14 +31,19 @@ public class MyString {
      * @return the number of times c appears in str
      */
     public static int countChar(String str, char ch) {
-        //// Replace the following statement with your code
-        return 0;
+        int charCounter = 0;
+        for(int i = 0; i < str.length(); i++){
+            if (str.charAt(i) == ch) {
+                charCounter++;
+            }
+        }
+        return charCounter;
     }
 
     /** Returns true if str1 is a subset string str2, false otherwise
      *  Examples:
      *  subsetOf("sap","space") returns true
-     *  subsetOf("spa","space") returns true
+     *  subsetOf("spa","space") returns false
      *  subsetOf("pass","space") returns false
      *  subsetOf("c","space") returns true
      *
@@ -36,8 +52,23 @@ public class MyString {
      * @return true is str1 is a subset of str2, false otherwise
      */
     public static boolean subsetOf(String str1, String str2) {
-         //// Replace the following statement with your code
-        return false;
+        int[] count = new int[256]; // Array to count characters in str2 (ASCII range)
+        
+        // Step 1: count all the letters in str2
+        for(char c : str2.toCharArray()){
+            count[c]++; // Increment count for char c
+        }
+
+        // Step 2: Check if all characters in str1 are present in str2
+        for(char c : str1.toCharArray()){
+            // Character c does not exsits in str2, or don't have not enough occurrences
+            if (count[c] == 0) {
+                return false;                
+            }
+            count[c]--; // "Use up" one occurrence of c
+        }
+        // Step 3: All characters are satisfied
+        return true;
     }
 
     /** Returns a string which is the same as the given string, with a space
@@ -49,8 +80,17 @@ public class MyString {
      * @return a string consisting of the characters of str, separated by spaces.
      */
     public static String spacedString(String str) {
-        //// Replace the following statement with your code
-        return null;
+        String spacedString = "";
+
+        if (str == null || str.isEmpty()) {
+            return ""; // Return an empty string or handle the case accordingly
+        }
+
+        for(int i = 0; i < (str.length() - 1); i++){
+            spacedString += str.charAt(i) + " ";
+        }
+        spacedString += str.charAt((str.length() - 1));
+        return spacedString;
     }
   
     /**
@@ -64,8 +104,17 @@ public class MyString {
      * @return a randomly generated string, consisting of 'n' lowercase letters
      */
     public static String randomStringOfLetters(int n) {
-        //// Replace the following statement with your code
-        return null;
+        String randomStringOfLetters = "";
+
+        for(int i = 0; i < n; i++){
+            // Generate a random number between 0 and 25 (inclusive)
+            int randomIndex = (int) (Math.random() * 26);
+            // Map the number to the ASCII range for lowercase letters ('a' = 97 to 'z' = 122)
+            char randomLetter = (char) ('a' + randomIndex);
+            
+            randomStringOfLetters += randomLetter;
+        }
+        return randomStringOfLetters;
     }
 
     /**
@@ -78,8 +127,37 @@ public class MyString {
      * @return a string consisting of str1 minus all the characters of str2
      */
     public static String remove(String str1, String str2) {
-       //// Replace the following statement with your code
-        return null;
+        int[] count = new int[256]; // Array to count characters in str2 (ASCII range)
+        
+        // Pre-Step: edge case handeling
+        // Handle empty strings
+        if (str2.isEmpty()) {
+            return str1; // Nothing to remove
+        }
+        if (str1.isEmpty()) {
+            return ""; // No characters to remove from an empty string
+        }
+        
+        // Step 1: count all the letters in str2
+        for(char c : str2.toCharArray()){
+            count[c]++; // Increment count for char c
+        }
+
+        // Step 2: Reconstruct str1 without characters in str2
+        String result = "";
+        for(char c : str1.toCharArray()){
+            // If this character is not in str2, append it to result
+            if (count[c] == 0) {
+                result += c;
+            }
+            
+            else{
+                count[c]--; // "Use up" one occurrence of this character
+            }
+            
+        }
+        // Step 3: Return the resulting string
+        return result;
     }
 
     /**
