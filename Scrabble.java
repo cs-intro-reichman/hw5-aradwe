@@ -112,15 +112,15 @@ public class Scrabble {
 			
 			// Case 2: Validate the word against the dictionary
 			if (!isWordInDictionary(input)) {
-				//System.out.println("Invalid word. Try again.");
-				System.out.println("No such word in the dictionary. Try again.");
+				System.out.println("Invalid word. Try again.");
+				//System.out.println("No such word in the dictionary. Try again.");
 				continue;
 			}
 			
 			// Case 3: Validate the word against the letters available in the hand
 			if (!MyString.subsetOf(input, hand)) {
-				System.out.println("No such word in the dictionary. Try again.");
-				//System.out.println("Invalid word. Try again.");
+				//System.out.println("No such word in the dictionary. Try again.");
+				System.out.println("Invalid word. Try again.");
 				continue;	
 			}
 			
@@ -130,7 +130,8 @@ public class Scrabble {
 			score += wordScore;
 
 			// Display word score and running total
-			System.out.println("'" + input + "' -> score: " + wordScore +"\n");
+			System.out.println(input + " earned " + wordScore + " points. Score: " + score + " points");
+			//System.out.println("'" + input + "' -> score: " + wordScore +"\n");
 			//System.out.println("\"" + input + "\" earned " + wordScore + " points. Total: " + score + " points.");
 		}
 
