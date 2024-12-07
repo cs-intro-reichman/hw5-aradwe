@@ -135,12 +135,29 @@ public class Scrabble {
 			//System.out.println("\"" + input + "\" earned " + wordScore + " points. Total: " + score + " points.");
 		}
 
+		// Case 5: Check if any valid words can be made from the remaining letters
+		if (!hasValidWords(hand)) {
+			System.out.println("Ran out of letters. Total score: " + score + " points");
+			
+		}
+		
 		// Final message if the hand was left empty.
 		if (hand.length() == 0) {
 	        System.out.println("Ran out of letters. Total score: " + score + " points");
 		}
 
 	}
+
+	// Helper Method: Check if any word in the dictionary can be formed with the given letters
+	public static boolean hasValidWords(String hand) {
+		for (int i = 0; i < NUM_OF_WORDS; i++) {
+			if (MyString.subsetOf(DICTIONARY[i], hand)) {
+				return true;
+			}
+		}
+		return false;
+	}
+
 
 	// Plays a Scrabble game. Prompts the user to enter 'n' for playing a new hand, or 'e'
 	// to end the game. If the user enters any other input, writes an error message.
