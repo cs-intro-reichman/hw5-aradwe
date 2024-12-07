@@ -136,11 +136,11 @@ public class Scrabble {
 		}
 
 	// Final message if the hand was left empty.
-	System.out.println("Ran out of letters. Total score: " + score + " points");
+	//System.out.println("Ran out of letters. Total score: " + score + " points");
 
 	}
 
-	
+
 	// Helper Method: Check if any word in the dictionary can be formed with the given letters
 	public static boolean hasValidWords(String hand) {
 		for (int i = 0; i < NUM_OF_WORDS; i++) {
