@@ -87,7 +87,8 @@ public class Scrabble {
 		return hand;
 	}
 	
-    // Runs a single hand in a Scrabble game. Each time the user enters a valid word:
+    
+	// Runs a single hand in a Scrabble game. Each time the user enters a valid word:
     // 1. The letters in the word are removed from the hand, which becomes smaller.
     // 2. The user gets the Scrabble points of the entered word.
     // 3. The user is prompted to enter another word, or '.' to end the hand. 
@@ -113,13 +114,11 @@ public class Scrabble {
 			// Case 2: Validate the word against the dictionary
 			if (!isWordInDictionary(input)) {
 				System.out.println("Invalid word. Try again.");
-				//System.out.println("No such word in the dictionary. Try again.");
 				continue;
 			}
 			
 			// Case 3: Validate the word against the letters available in the hand
 			if (!MyString.subsetOf(input, hand)) {
-				//System.out.println("No such word in the dictionary. Try again.");
 				System.out.println("Invalid word. Try again.");
 				continue;	
 			}
@@ -131,24 +130,12 @@ public class Scrabble {
 
 			// Display word score and running total
 			System.out.println(input + " earned " + wordScore + " points. Score: " + score + " points\n");
-			//System.out.println("'" + input + "' -> score: " + wordScore +"\n");
-			//System.out.println("\"" + input + "\" earned " + wordScore + " points. Total: " + score + " points.");
-		}
 
-	// Final message if the hand was left empty.
-	//System.out.println("Ran out of letters. Total score: " + score + " points");
-
-	}
-
-
-	// Helper Method: Check if any word in the dictionary can be formed with the given letters
-	public static boolean hasValidWords(String hand) {
-		for (int i = 0; i < NUM_OF_WORDS; i++) {
-			if (MyString.subsetOf(DICTIONARY[i], hand)) {
-				return true;
+			// Final message if the hand was left empty.
+			if (hand.length() == 0) {
+				System.out.println("Ran out of letters. Total score: " + score + " points");
 			}
 		}
-		return false;
 	}
 
 
