@@ -130,7 +130,7 @@ public class Scrabble {
 			score += wordScore;
 
 			// Display word score and running total
-			System.out.println(input + " earned " + wordScore + " points. Score: " + score + " points");
+			System.out.println(input + " earned " + wordScore + " points. Score: " + score + " points\n");
 			//System.out.println("'" + input + "' -> score: " + wordScore +"\n");
 			//System.out.println("\"" + input + "\" earned " + wordScore + " points. Total: " + score + " points.");
 		}
